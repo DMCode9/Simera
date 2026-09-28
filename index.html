@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Σήμερα — Η εφαρμογή Android</title>
+  <meta name="description" content="Σήμερα: 100% δωρεάν, χωρίς διαφημίσεις και trackers, 100% παραμετροποιήσιμη εφαρμογή για Android." />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Literata:opsz,wght@7..72,500;7..72,600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f6f7fb; --card: #ffffff; --text: #12172b; --muted: #5b6480;
+      --line: rgba(18,23,43,.1); --blue: #1f4e79; --sun: #b86a00;
+      --sun-soft: rgba(255,152,0,.12); --blue-soft: rgba(0,174,239,.09);
+      --glow: rgba(255,166,43,.35);
+      --shadow: 0 30px 60px -30px rgba(18,23,43,.25), 0 2px 6px rgba(18,23,43,.04);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b1024; --card: #151c38; --text: #eef1fb; --muted: #9aa4c4;
+        --line: rgba(238,241,251,.1); --blue: #4cc3f5; --sun: #ffb84d;
+        --sun-soft: rgba(255,184,77,.12); --blue-soft: rgba(76,195,245,.12);
+        --glow: rgba(255,166,43,.22);
+        --shadow: 0 30px 60px -30px rgba(0,0,0,.7), 0 0 0 1px rgba(238,241,251,.04);
+      }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.65;
+      -webkit-font-smoothing: antialiased; overflow-x: hidden;
+    }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 1.25rem; }
+    h1, h2, h3 { font-family: "Literata", Georgia, "Times New Roman", serif; font-weight: 600; letter-spacing: -.02em; line-height: 1.1; }
+    :focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+
+    /* Nav */
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 0; position: relative; z-index: 3; }
+    .brand { display: flex; align-items: center; gap: .6rem; font: 600 1.15rem "Literata", serif; text-decoration: none; color: var(--text); }
+    .brand img { width: 36px; height: 36px; border-radius: 10px; display: block; }
+
+    /* Hero */
+    .hero {
+      position: relative; margin-top: -4.5rem; padding: 8rem 0 5rem;
+      background: radial-gradient(56rem 30rem at 50% -6rem, var(--glow), transparent 70%);
+    }
+    .hero .wrap { display: grid; grid-template-columns: 1.1fr .9fr; gap: 2rem; align-items: center; }
+    h1 { font-size: clamp(2.8rem, 8vw, 5.2rem); }
+    h1 span { background: linear-gradient(100deg,#ffb400,#ff6a00); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .sub { font-size: 1.2rem; color: var(--muted); max-width: 30em; margin: 1.4rem 0 2rem; }
+    .cta { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; }
+    .play { display: inline-flex; align-items: center; gap: .8rem; padding: .75rem 1.4rem .75rem 1.1rem; border-radius: 14px; background: var(--text); color: var(--bg); opacity: .55; cursor: not-allowed; user-select: none; }
+    .play svg { width: 26px; height: 26px; }
+    .play small { display: block; font-size: .68rem; letter-spacing: .06em; text-transform: uppercase; opacity: .8; line-height: 1.2; }
+    .play b { font-size: 1.05rem; font-weight: 600; line-height: 1.2; }
+    .soon { color: var(--muted); font-size: .9rem; }
+    .soon b { color: var(--sun); }
+
+    /* Phone */
+    .stage { position: relative; display: grid; place-items: center; min-height: 460px; }
+    .orb { position: absolute; width: min(400px, 90%); aspect-ratio: 1; border-radius: 50%; background: linear-gradient(160deg,#f8b93a,#e8800c); box-shadow: 0 0 0 40px rgba(255,166,43,.12), 0 0 0 90px rgba(255,166,43,.07); }
+    .phone { position: relative; width: 236px; aspect-ratio: 9/18.5; border-radius: 38px; padding: 9px; background: #0d1226; box-shadow: var(--shadow); transform: rotate(4deg); }
+    .screen { position: relative; height: 100%; border-radius: 30px; overflow: hidden; background: #f09a05; }
+    .screen::before { content: ""; position: absolute; top: 9px; left: 50%; width: 62px; height: 16px; margin-left: -31px; border-radius: 999px; background: #0d1226; z-index: 2; }
+    .screen img { position: absolute; left: 0; top: 46%; width: 100%; transform: translateY(-50%); }
+    .screen .t { position: absolute; bottom: 8%; left: 0; right: 0; text-align: center; font: 600 1.5rem "Literata", serif; color: #3a1700; }
+    .float { position: absolute; padding: .5rem .9rem; border-radius: 14px; background: var(--card); border: 1px solid var(--line); box-shadow: var(--shadow); font-size: .82rem; font-weight: 600; }
+    .float.a { top: 14%; left: 2%; color: var(--sun); }
+    .float.b { bottom: 16%; right: 0; color: var(--blue); }
+
+    /* Features */
+    section { padding: 4.5rem 0; }
+    .head { max-width: 34rem; margin-bottom: 2.5rem; }
+    .head h2 { font-size: clamp(2rem, 5vw, 3rem); }
+    .head p { color: var(--muted); margin-top: 1rem; font-size: 1.1rem; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 2rem 1.75rem; box-shadow: var(--shadow); position: relative; overflow: hidden; }
+    .card::after { content: ""; position: absolute; right: -50px; top: -50px; width: 150px; height: 150px; border-radius: 50%; background: var(--sun-soft); }
+    .card:nth-child(2)::after { background: var(--blue-soft); }
+    .ico { width: 52px; height: 52px; border-radius: 16px; display: grid; place-items: center; margin-bottom: 1.4rem; background: linear-gradient(160deg,#f8b93a,#e8800c); color: #4a1f00; position: relative; z-index: 1; }
+    .card:nth-child(2) .ico { background: linear-gradient(160deg,#00aeef,#173c5e); color: #fff; }
+    .ico svg { width: 26px; height: 26px; }
+    .card h3 { font-size: 1.5rem; margin-bottom: .6rem; position: relative; z-index: 1; }
+    .card p { color: var(--muted); position: relative; z-index: 1; }
+
+    /* Screenshots */
+    .shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
+    .shot { aspect-ratio: 9/16; border-radius: 28px; border: 2px dashed var(--line); background: var(--blue-soft); display: grid; place-items: center; text-align: center; color: var(--muted); font-size: .9rem; padding: 1rem; }
+    .shot b { display: block; font: 600 1.15rem "Literata", serif; color: var(--text); margin-bottom: .2rem; }
+
+    /* Closing + footer */
+    .band { border-radius: 32px; padding: clamp(2rem, 6vw, 4rem); text-align: center; color: #3a1700; background: linear-gradient(160deg,#f8b93a 0%,#f29b0b 50%,#e8800c 100%); position: relative; overflow: hidden; }
+    .band::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 46px; background: #1f4e79; border-radius: 50% 50% 0 0 / 100% 100% 0 0; }
+    .band h2 { font-size: clamp(1.8rem, 5vw, 2.8rem); margin-bottom: .8rem; }
+    .band p { max-width: 30em; margin: 0 auto 1.5rem; opacity: .85; }
+    .band .play { margin: 0 auto 2rem; }
+    footer { padding: 2.5rem 0 3rem; display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; color: var(--muted); font-size: .9rem; }
+    footer a { color: var(--blue); text-decoration: none; font-weight: 500; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 860px) {
+      .hero .wrap { grid-template-columns: 1fr; }
+      .stage { min-height: 400px; order: 2; }
+      .grid, .shots { grid-template-columns: 1fr; }
+      .shot { aspect-ratio: 16/9; }
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .phone { animation: bob 6s ease-in-out infinite; }
+      @keyframes bob { 50% { transform: rotate(4deg) translateY(-12px); } }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="#"><img src="icon.png" alt="" width="36" height="36" />Σήμερα</a>
+    </nav>
+  </div>
+
+  <header class="hero">
+    <div class="wrap">
+      <div>
+        <h1><span>Σήμερα</span><br /><em style="font-style:normal">στα μέτρα σου.</em></h1>
+        <p class="sub" data-i="sub">Μια ελαφριά εφαρμογή που σέβεται εσένα και τη συσκευή σου. Δωρεάν, καθαρή και φτιαγμένη όπως τη θέλεις εσύ.</p>
+        <div class="cta">
+          <div class="play" aria-disabled="true">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 2.6v18.8c0 .5.6.8 1 .5l16-9.4c.4-.2.4-.8 0-1L5 2.1c-.4-.3-1 0-1 .5z"/></svg>
+            <span><small data-i="get">Διαθέσιμο στο</small><b>Google Play</b></span>
+          </div>
+          <span class="soon"><b data-i="soon">Έρχεται σύντομα.</b> <span data-i="soon2">Η εφαρμογή βρίσκεται υπό κατασκευή.</span></span>
+        </div>
+      </div>
+      <div class="stage" aria-hidden="true">
+        <div class="orb"></div>
+        <div class="phone"><div class="screen"><img src="icon.png" alt="" /><div class="t">Σήμερα</div></div></div>
+        <div class="float a" data-i="f1">0 € για πάντα</div>
+        <div class="float b" data-i="f2">0 trackers</div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="wrap">
+        <div class="head">
+          <h2 data-i="h2">Απλή. Ελεύθερη. Δική σου.</h2>
+          <p data-i="h2p">Τρεις αρχές που καθορίζουν κάθε απόφαση στη σχεδίαση της εφαρμογής.</p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 21V7M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg></div>
+            <h3 data-i="c1t">100% δωρεάν</h3>
+            <p data-i="c1p">Χωρίς συνδρομές, χωρίς αγορές μέσα στην εφαρμογή, χωρίς κρυμμένα κόστη. Όλα ανοιχτά για όλους.</p>
+          </article>
+          <article class="card">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+            <h3 data-i="c2t">Χωρίς διαφημίσεις, χωρίς trackers</h3>
+            <p data-i="c2p">Καμία διαφήμιση και κανένας μηχανισμός παρακολούθησης. Τα δεδομένα σου μένουν στη συσκευή σου.</p>
+          </article>
+          <article class="card">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/></svg></div>
+            <h3 data-i="c3t">100% παραμετροποιήσιμη</h3>
+            <p data-i="c3p">Προσάρμοσέ την στις δικές σου ανάγκες και στο δικό σου στυλ, ώστε να δείχνει και να λειτουργεί όπως θέλεις.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="head">
+          <h2 data-i="h3">Μια πρώτη ματιά</h2>
+          <p data-i="h3p">Τα screenshots θα προστεθούν σύντομα.</p>
+        </div>
+        <div class="shots">
+          <div class="shot"><div><b data-i="sh">Σύντομα</b><span data-i="sh2">Screenshot 1</span></div></div>
+          <div class="shot"><div><b data-i="sh">Σύντομα</b><span data-i="sh3">Screenshot 2</span></div></div>
+          <div class="shot"><div><b data-i="sh">Σύντομα</b><span data-i="sh4">Screenshot 3</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="band">
+          <h2 data-i="bt">Έρχεται στο Google Play</h2>
+          <p data-i="bp">Ετοιμάζουμε την πρώτη έκδοση. Το κουμπί θα ενεργοποιηθεί μόλις είναι διαθέσιμη.</p>
+          <div class="play" aria-disabled="true">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 2.6v18.8c0 .5.6.8 1 .5l16-9.4c.4-.2.4-.8 0-1L5 2.1c-.4-.3-1 0-1 .5z"/></svg>
+            <span><small data-i="get">Διαθέσιμο στο</small><b>Google Play</b></span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="wrap">
+    <footer>
+      <span>© 2026 Σήμερα</span>
+      <a href="privacy.html" data-i="pp">Πολιτική Απορρήτου</a>
+    </footer>
+  </div>
+
+</body>
+</html>
