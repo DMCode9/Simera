@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Συχνές Ερωτήσεις | FAQ — Σήμερα</title>
+  <meta name="description" content="Συχνές ερωτήσεις και απαντήσεις για την εφαρμογή «Σήμερα» — 100% δωρεάν, offline εορτολόγιο και καθημερινό dashboard για Android." />
+  <meta name="theme-color" content="#f6f7fb" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0b1024" media="(prefers-color-scheme: dark)" />
+
+  <link rel="icon" type="image/png" href="../favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #f6f7fb; --card: #ffffff; --text: #12172b; --muted: #5b6480;
+      --line: rgba(18,23,43,.1); --blue: #1f4e79; --sun: #b86a00;
+      --sun-soft: rgba(255,152,0,.12); --blue-soft: rgba(0,174,239,.09);
+      --glow: rgba(255,166,43,.35);
+      --shadow: 0 30px 60px -30px rgba(18,23,43,.25), 0 2px 6px rgba(18,23,43,.04);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b1024; --card: #151c38; --text: #eef1fb; --muted: #9aa4c4;
+        --line: rgba(238,241,251,.1); --blue: #4cc3f5; --sun: #ffb84d;
+        --sun-soft: rgba(255,184,77,.12); --blue-soft: rgba(76,195,245,.12);
+        --glow: rgba(255,166,43,.22);
+        --shadow: 0 30px 60px -30px rgba(0,0,0,.7), 0 0 0 1px rgba(238,241,251,.04);
+      }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.65;
+      -webkit-font-smoothing: antialiased; overflow-x: hidden;
+    }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 1.25rem; }
+    .content-wrap { max-width: 820px; margin: 0 auto; }
+    h1, h2, h3 { font-family: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-weight: 700; letter-spacing: -.03em; line-height: 1.15; }
+    :focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+
+    /* Nav */
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 0; position: relative; z-index: 3; }
+    .brand { display: flex; align-items: center; gap: .6rem; font: 700 1.15rem "Manrope", sans-serif; letter-spacing: -.02em; text-decoration: none; color: var(--text); }
+    .brand img { width: 36px; height: 36px; border-radius: 10px; display: block; }
+    .nav-right { display: flex; align-items: center; gap: 1.25rem; }
+    .nav-links { display: flex; align-items: center; gap: 1.25rem; }
+    .nav-link { color: var(--muted); text-decoration: none; font-size: .95rem; font-weight: 500; transition: color .2s; }
+    .nav-link:hover, .nav-link.active { color: var(--text); }
+    .nav-link.active { font-weight: 600; }
+
+    /* Lang Switcher */
+    .lang-switcher {
+      display: inline-flex;
+      position: relative;
+      padding: 3px;
+      border-radius: 999px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      box-shadow: 0 2px 8px rgba(18,23,43,.04);
+    }
+    .lang-switcher button {
+      position: relative;
+      z-index: 1;
+      background: transparent;
+      border: 0;
+      color: var(--muted);
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+      cursor: pointer;
+      font: 600 0.78rem/1 "Inter", sans-serif;
+      transition: color 0.2s ease;
+    }
+    .lang-switcher button.active { color: var(--text); }
+    .lang-switcher .thumb {
+      position: absolute;
+      top: 3px; bottom: 3px; left: 3px;
+      width: calc(50% - 3px);
+      background: var(--sun-soft);
+      border: 1px solid rgba(255, 152, 0, 0.25);
+      border-radius: 999px;
+      transition: transform 0.25s cubic-bezier(0.3, 0.8, 0.3, 1);
+    }
+    .lang-switcher[data-lang="en"] .thumb { transform: translateX(100%); }
+
+    /* Page Hero */
+    .page-hero {
+      position: relative; margin-top: -4.5rem; padding: 7.5rem 0 3rem;
+      background: radial-gradient(56rem 30rem at 50% -6rem, var(--glow), transparent 70%);
+      text-align: center;
+    }
+    .badge {
+      display: inline-flex; align-items: center; gap: .45rem;
+      background: var(--sun-soft); color: var(--sun);
+      border: 1px solid rgba(255, 152, 0, 0.25);
+      padding: .3rem .85rem; border-radius: 999px;
+      font-size: .8rem; font-weight: 600; margin-bottom: 1.25rem;
+    }
+    .badge::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--sun); }
+    h1 { font-size: clamp(2.4rem, 6.5vw, 4rem); margin-bottom: .8rem; }
+    h1 span { background: linear-gradient(100deg,#ffb400,#ff6a00); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .sub { font-size: 1.15rem; color: var(--muted); max-width: 32em; margin: 0 auto; }
+
+    /* Search Box */
+    .search-wrapper {
+      position: relative; margin: 2rem 0 2.5rem;
+    }
+    .search-box {
+      position: relative; width: 100%;
+    }
+    .search-box input {
+      width: 100%;
+      padding: 1rem 1.25rem 1rem 3.2rem;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: var(--text);
+      font-size: 1rem;
+      font-family: inherit;
+      box-shadow: var(--shadow);
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .search-box input:focus {
+      outline: none;
+      border-color: rgba(255, 166, 43, 0.5);
+      box-shadow: 0 10px 25px -5px rgba(255, 152, 0, 0.15), var(--shadow);
+    }
+    @media (prefers-color-scheme: dark) {
+      .search-box input:focus {
+        border-color: rgba(76, 195, 245, 0.5);
+        box-shadow: 0 10px 25px -5px rgba(0, 174, 239, 0.15), var(--shadow);
+      }
+    }
+    .search-icon {
+      position: absolute; left: 1.15rem; top: 50%;
+      transform: translateY(-50%); width: 20px; height: 20px;
+      color: var(--muted); pointer-events: none;
+    }
+
+    /* Category Titles */
+    .category-title {
+      font-family: "Manrope", sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -.02em;
+      color: var(--text);
+      margin: 2.2rem 0 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .category-title::before {
+      content: "";
+      display: inline-block;
+      width: 4px;
+      height: 1.2em;
+      background: linear-gradient(135deg, #ff9500 0%, #e65100 100%);
+      border-radius: 3px;
+    }
+
+    /* FAQ List & Items */
+    .faq-list {
+      display: flex; flex-direction: column; gap: 0.95rem; margin-bottom: 2rem;
+    }
+    .faq-item {
+      background: var(--card); border: 1px solid var(--line); border-radius: 20px;
+      box-shadow: var(--shadow); overflow: hidden;
+      transition: transform .2s ease, border-color .25s ease, box-shadow .25s ease;
+    }
+    .faq-item:hover {
+      border-color: rgba(18,23,43,.18);
+    }
+    .faq-item[open] {
+      border-color: rgba(255,166,43,.45);
+      box-shadow: 0 20px 40px -20px rgba(255,152,0,.15), var(--shadow);
+    }
+    @media (prefers-color-scheme: dark) {
+      .faq-item:hover { border-color: rgba(238,241,251,.2); }
+      .faq-item[open] {
+        border-color: rgba(76,195,245,.45);
+        box-shadow: 0 20px 40px -20px rgba(0,174,239,.18), var(--shadow);
+      }
+    }
+    .faq-item summary {
+      padding: 1.3rem 1.5rem;
+      font: 600 1.05rem "Inter", sans-serif;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      user-select: none; list-style: none; color: var(--text);
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary .chevron {
+      width: 20px; height: 20px; color: var(--muted);
+      transition: transform .25s cubic-bezier(0.3, 0.8, 0.3, 1), color .2s ease;
+      flex-shrink: 0;
+    }
+    .faq-item[open] summary .chevron {
+      transform: rotate(180deg);
+      color: var(--sun);
+    }
+    @media (prefers-color-scheme: dark) {
+      .faq-item[open] summary .chevron { color: var(--blue); }
+    }
+    .faq-ans {
+      padding: 0 1.5rem 1.4rem;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 0.98rem;
+      border-top: 1px solid var(--line);
+      margin-top: 0.2rem;
+      padding-top: 1rem;
+    }
+    .faq-ans p + p { margin-top: 0.75rem; }
+    .faq-ans strong { color: var(--text); }
+    .faq-ans ul { padding-left: 1.35rem; margin-top: 0.6rem; }
+    .faq-ans li { margin-bottom: 0.4rem; }
+
+    /* Callout Card */
+    .band-callout {
+      border-radius: 28px; padding: clamp(2rem, 5vw, 3rem);
+      text-align: center; color: #3a1700;
+      background: linear-gradient(160deg,#f8b93a 0%,#f29b0b 50%,#e8800c 100%);
+      margin: 3.5rem 0 4rem; position: relative; overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .band-callout h3 { font-size: clamp(1.4rem, 4vw, 1.9rem); margin-bottom: .6rem; }
+    .band-callout p { max-width: 32em; margin: 0 auto; opacity: .9; font-size: 1rem; line-height: 1.5; }
+
+    .no-results {
+      display: none; text-align: center; padding: 3rem 1rem;
+      color: var(--muted); font-size: 1.05rem;
+    }
+
+    /* Footer */
+    footer {
+      padding: 2.5rem 0 3.5rem; display: flex; flex-wrap: wrap; gap: 1rem;
+      justify-content: space-between; color: var(--muted); font-size: .9rem;
+      border-top: 1px solid var(--line);
+    }
+    footer a { color: var(--blue); text-decoration: none; font-weight: 500; }
+    footer a:hover { text-decoration: underline; }
+    .footer-links { display: flex; gap: 1.25rem; }
+
+    @media (max-width: 768px) {
+      .faq-item summary { padding: 1.1rem 1.2rem; font-size: .98rem; }
+      .faq-ans { padding: 0 1.2rem 1.2rem; font-size: .92rem; }
+      .nav-links { gap: .85rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="../"><img src="../icon.png" alt="" width="36" height="36" />Σήμερα</a>
+      <div class="nav-right">
+        <div class="nav-links">
+          <a href="../" class="nav-link" id="nav-home">Αρχική</a>
+          <a href="../FAQ/" class="nav-link active" id="nav-faq">FAQ</a>
+          <a href="../Privacy/" class="nav-link" id="nav-privacy">Απόρρητο</a>
+        </div>
+        <div class="lang-switcher" id="switcher" data-lang="el" role="group" aria-label="Language">
+          <span class="thumb" aria-hidden="true"></span>
+          <button id="btn-el" class="active" aria-pressed="true" onclick="setLang('el')">EL</button>
+          <button id="btn-en" aria-pressed="false" onclick="setLang('en')">EN</button>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Ελληνικά -->
+  <div id="content-el">
+    <header class="page-hero">
+      <div class="wrap">
+        <div class="hero-badge"><span class="badge">Υποστήριξη &amp; Απαντήσεις</span></div>
+        <h1>Συχνές <span>Ερωτήσεις.</span></h1>
+        <p class="sub">Όλα όσα θέλεις να γνωρίζεις για τη λειτουργία, τις δυνατότητες και την ασφάλεια της εφαρμογής «Σήμερα».</p>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <div class="content-wrap">
+        <div class="search-wrapper">
+          <div class="search-box">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="faq-search-el" placeholder="Αναζήτηση σε ερωτήσεις..." aria-label="Αναζήτηση ερωτήσεων" oninput="filterFaq('el')" />
+          </div>
+        </div>
+
+        <div id="faq-container-el">
+          <!-- Κατηγορία: Γενικά -->
+          <h2 class="category-title">Γενικές Ερωτήσεις</h2>
+          <div class="faq-list">
+            <details class="faq-item" open>
+              <summary>
+                <span>Είναι όντως 100% δωρεάν για πάντα;</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </summary>
+              <div class="faq-ans">
+                <p>Ναι, απολύτως. Η εφαρμογή δεν περιέχει συνδρομές, πληρωμές εντός εφαρμογής (in-app purchases) ούτε κλειδωμένες λειτουργίες. Όλες οι δυνατότητες είναι και θα παραμείνουν διαθέσιμες σε όλους χωρίς κανένα κόστος.</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary>
+                <span>Αφού είναι δωρεάν, πώς βγαίνει κέρδος;</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </summary>
+              <div class="faq-ans">
+                <p>Δεν υπάρχει κανένα οικονομικό όφελος ή κέρδος από την εφαρμογή. Η ανάπτυξή της είναι το προσωπικό μου χόμπι και προσφέρεται ως δώρο σε όλους, χωρίς διαφημίσεις, συνδρομές ή κρυφές χρεώσεις.</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary>
+                <span>Πότε θα είναι διαθέσιμη η εφαρμογή στο Google Play;</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </summary>
+              <div class="faq-ans">
+                <p>Όταν θα είναι έτοιμη. Αν όλα πάνε καλά, κάποια στιγμή μέσα στο 2027.</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary>
+                <span>Υπάρχει πρόβλεψη για έκδοση iOS (iPhone / iPad);</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </summary>
+              <div class="faq-ans">
+                <p>Όχι. Η εφαρμογή δεν έχει κερδοσκοπικό χαρακτήρα και δεν μπορώ να την συντηρώ πληρώνοντας 100 ευρώ κάθε χρόνο για developer account + έξοδα συσκευής iPhone που δεν διαθέτω.</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary>
+                <span>Κάτι μου θυμίζει... Κάνω λάθος;</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </summary>
+              <div class="faq-ans">
+                <p>Όχι, δεν κάνεις λάθος! Το «Σήμερα» φτιάχτηκε από τις στάχτες της παλιάς «Ατζέντας». Ο κώδικας και το UI βελτιώθηκαν και ανανεώθηκαν ριζικά με τη βοήθεια της AI.</p>
+                <p>Η νέα εφαρμογή έχει σκοπό μόνο να ευχαριστήσει τους χρήστες που για 10 ολόκληρα χρόνια αγάπησαν και στήριξαν την παλιά εφαρμογή.</p>
+              </div>
+            </details>
+          </div>
+
+          <!-- Κατηγορία: Λειτουργίες & Δεδομένα -->
+          <h2 class="category-title">Λειτουργίες &amp; Χρήση</h2>
+          <div class="faq-list">
+            <details class="faq-item">
+              <summary>
+                <span>Χρειάζεται σύνδεση στο internet για να λειτουργήσει;</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </summary>
+              <div class="faq-ans">
+                <p>Όχι, η εφαρμογή είναι σχεδιασμένη να λειτουργεί <strong>πλήρως offline</strong>. Όλο το εορτολόγιο, τα αγιολογικά δεδομένα, οι παγκόσμιες ημέρες, τα αστρονομικά στοιχεία και τα τηλέφωνα ανάγκης βρίσκονται ενσωματωμένα στη συσκευή σου.</p>
+                <p>Ορισμένες προαιρετικές δυνατότητες (π.χ. εικόνες υψηλής ανάλυσης) ενδέχεται να απαιτήσουν μία εφάπαξ λήψη δεδομένων κατά την πρώτη τους προβολή, και κατόπιν αποθηκεύονται τοπικά.</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary>
+                <span>Ποιες πληροφορίες περιλαμβάνει το «Σήμερα»;</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </summary>
+              <div class="faq-ans">
+                <p>Το «Σήμερα» αποτελεί ένα ολοκληρωμένο καθημερινό ταμπλό πληροφοριών που περιλαμβάνει:</p>
+                <ul>
+                  <li><strong>Εορτολόγιο &amp; Αγιολόγιο:</strong> Ονομαστικές εορτές, σταθερές και κινητές εορτές, πλήρεις βίους και εικόνες αγίων.</li>
+                  <li><strong>Προσωπικές Υπενθυμίσεις:</strong> Γενέθλια, επετείους, προσωπικές σημειώσεις και συμβάντα.</li>
+                  <li><strong>Ημερολόγιο Αργιών &amp; Νηστειών:</strong> Επίσημες και τοπικές αργίες, καθώς και λεπτομερείς κανόνες νηστείας.</li>
+                  <li><strong>Εγκυκλοπαιδικά &amp; Έμπνευση:</strong> «Σαν σήμερα» ιστορικά γεγονότα, παγκόσμιες ημέρες και επιλεγμένα ρητά/αποφθέγματα.</li>
+                  <li><strong>Χρήσιμα Δεδομένα:</strong> Ανατολή/δύση ήλιου και σελήνης, φάσεις φεγγαριού και τηλέφωνα έκτακτης ανάγκης.</li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary>
+                <span>Μπορώ να προσαρμόσω την εμφάνιση και τις ενότητες;</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </summary>
+              <div class="faq-ans">
+                <p>Ναι! Η εφαρμογή είναι <strong>100% παραμετροποιήσιμη</strong>. Μπορείς να ενεργοποιήσεις, να απενεργοποιήσεις ή να αλλάξεις τη σειρά των ενοτήτων στην κεντρική οθόνη, να επιλέξεις θέμα εμφάνισης (Light / Dark mode), μέγεθος γραμματοσειράς και προσαρμοσμένα widgets για την αρχική σου οθόνη.</p>
+              </div>
+            </details>
+          </div>
+
+          <!-- Κατηγορία: Ιδιωτικότητα & Ασφάλεια -->
+          <h2 class="category-title">Ιδιωτικότητα &amp; Ασφάλεια</h2>
+          <div class="faq-list">
+            <details class="faq-item">
+              <summary>
+                <span>Πώς διασφαλίζεται το απόρρητο και τα δεδομένα μου;</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </summary>
+              <div class="faq-ans">
+                <p>Η εφαρμογή έχει σχεδιαστεί με βάση την αρχή του <strong>«Privacy by Design»</strong>. Δεν περιέχει διαφημιστικά δίκτυα, trackers ή μηχανισμούς παρακολούθησης συμπεριφοράς. Τα δεδομένα, οι σημειώσεις και οι ρυθμίσεις σου μένουν αποθηκευμένα <strong>αποκλειστικά στη συσκευή σου</strong>.</p>
+                <p>Για περισσότερες λεπτομέρειες μπορείς να διαβάσεις την <a href="../Privacy/">Πολιτική Απορρήτου</a> μας.</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary>
+                <span>Ζητάει η εφαρμογή πρόσβαση στις επαφές ή την τοποθεσία μου;</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </summary>
+              <div class="faq-ans">
+                <p>Ναι, η εφαρμογή μπορεί να ζητήσει πρόσβαση:</p>
+                <ul>
+                  <li><strong>Στην τοποθεσία:</strong> για τον ακριβή υπολογισμό των αστρονομικών στοιχείων (ανατολή/δύση ηλίου και σελήνης).</li>
+                  <li><strong>Στις επαφές:</strong> για τον εντοπισμό επαφών που γιορτάζουν ή έχουν γενέθλια και την εμφάνιση υπενθυμίσεων.</li>
+                </ul>
+                <p>Όλα τα δεδομένα υφίστανται επεξεργασία <strong>αποκλειστικά τοπικά στη συσκευή σου</strong> και δεν μεταφέρονται ούτε αποθηκεύονται σε κανέναν εξωτερικό διακομιστή.</p>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <div class="no-results" id="no-results-el">
+          <p>Δεν βρέθηκαν αποτελέσματα για την αναζήτησή σας.</p>
+        </div>
+
+        <div class="band-callout">
+          <h3>Σχετικά με προτάσεις &amp; επικοινωνία</h3>
+          <p>Η ανάπτυξη της εφαρμογής είναι αποκλειστικά προσωπικό χόμπι. Για τον λόγο αυτό, δεν επιθυμώ επικοινωνία για νέα χαρακτηριστικά (features) ούτε με ενδιαφέρουν σχόλια και κριτικές. Η εφαρμογή θα παραμείνει μόνιμα σε κατάσταση <strong>Public Beta</strong> στο Play Store.</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- English -->
+  <div id="content-en" style="display: none;">
+    <header class="page-hero">
+      <div class="wrap">
+        <div class="hero-badge"><span class="badge">Support &amp; Answers</span></div>
+        <h1>Frequently Asked <span>Questions.</span></h1>
+        <p class="sub">Everything you need to know about the features, privacy, and operation of the "Simera" app.</p>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <div class="content-wrap">
+        <div class="search-wrapper">
+          <div class="search-box">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="faq-search-en" placeholder="Search questions..." aria-label="Search questions" oninput="filterFaq('en')" />
+          </div>
+        </div>
+
+        <div id="faq-container-en">
+          <!-- Category: General -->
+          <h2 class="category-title">General Questions</h2>
+          <div class="faq-list">
+            <details class="faq-item" open>
+              <summary>
+                <span>Is it really 100% free forever?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </summary>
+              <div class="faq-ans">
+                <p>Yes, absolutely. The app contains no subscriptions, in-app purchases, or locked features. All capabilities are and will remain free for everyone.</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary>
+                <span>Since it's completely free, how do you make a profit?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </summary>
+              <div class="faq-ans">
+                <p>There is no profit or financial gain from the app. Developing it is my personal hobby, and it is offered as a gift to everyone with zero ads, subscriptions, or hidden costs.</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary>
+                <span>When will it be available on Google Play?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </summary>
+              <div class="faq-ans">
+                <p>When it's ready. If all goes well, sometime during 2027.</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary>
+                <span>Is there an iOS (iPhone / iPad) version planned?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </summary>
+              <div class="faq-ans">
+                <p>No. The app is non-profit and free, and I cannot support it paying 100 euros every year for an Apple developer account plus the cost of an iPhone device which I do not own.</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary>
+                <span>This looks familiar... Am I mistaken?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </summary>
+              <div class="faq-ans">
+                <p>No, you're not mistaken! "Simera" was built from the ashes of the old "Agenda" app. The code and UI have been modernized, refined, and overhauled with the help of AI.</p>
+                <p>The sole purpose of this new app is to bring joy to the users who loved and supported the original app for 10 whole years.</p>
+              </div>
+            </details>
+          </div>
+
+          <!-- Category: Features & Usage -->
+          <h2 class="category-title">Features &amp; Usage</h2>
+          <div class="faq-list">
+            <details class="faq-item">
+              <summary>
+                <span>Does it require an active internet connection?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </summary>
+              <div class="faq-ans">
+                <p>No, the app is engineered to work <strong>fully offline</strong>. The calendar, name days, saint bios, world days, astronomical calculations, and emergency numbers are stored directly on your device.</p>
+                <p>A few optional features (such as high-res images) might require a one-time download upon first access, after which they are cached locally.</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary>
+                <span>What information is included in "Simera"?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </summary>
+              <div class="faq-ans">
+                <p>"Simera" is a complete daily dashboard that brings together:</p>
+                <ul>
+                  <li><strong>Name Days &amp; Synaxarion:</strong> Daily celebrations, movable feasts, full saint biographies and icons.</li>
+                  <li><strong>Personal Events:</strong> Birthdays, anniversaries, personal memos and tasks.</li>
+                  <li><strong>Holidays &amp; Fasting:</strong> Official national holidays and detailed fasting rules.</li>
+                  <li><strong>Knowledge &amp; Inspiration:</strong> "On this day" historical events, international observance days, and daily quotes.</li>
+                  <li><strong>Astronomical &amp; Useful Info:</strong> Sunrise/sunset times, moon phases, and emergency hotlines.</li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary>
+                <span>Can I customize the layout and visible sections?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </summary>
+              <div class="faq-ans">
+                <p>Yes! The app is <strong>100% customizable</strong>. You can toggle, reorder, or collapse any card on your dashboard, switch themes (Light / Dark mode), adjust font sizes, and configure home screen widgets.</p>
+              </div>
+            </details>
+          </div>
+
+          <!-- Category: Privacy & Security -->
+          <h2 class="category-title">Privacy &amp; Security</h2>
+          <div class="faq-list">
+            <details class="faq-item">
+              <summary>
+                <span>How is my privacy protected?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </summary>
+              <div class="faq-ans">
+                <p>The app is built around <strong>Privacy by Design</strong> principles. It contains zero ad networks, marketing SDKs, or behavioral trackers. All your personal notes and preferences stay <strong>strictly on your device</strong>.</p>
+                <p>For more details, please review our <a href="../Privacy/">Privacy Policy</a>.</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary>
+                <span>Does the app access my contacts or location?</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </summary>
+              <div class="faq-ans">
+                <p>Yes, the app may request access to:</p>
+                <ul>
+                  <li><strong>Location:</strong> to accurately calculate astronomical data (sunrise/sunset and moon phases) for your area.</li>
+                  <li><strong>Contacts:</strong> to identify contacts celebrating their name day or birthday and display reminders.</li>
+                </ul>
+                <p>All data is processed <strong>strictly locally on your device</strong> and is never transmitted or uploaded to external servers.</p>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <div class="no-results" id="no-results-en">
+          <p>No matching questions found.</p>
+        </div>
+
+        <div class="band-callout">
+          <h3>Suggestions &amp; Communication</h3>
+          <p>Developing this app is purely a personal hobby. For this reason, I do not wish to receive requests for new features, nor am I interested in reviews or feedback. The app will permanently remain in <strong>Public Beta</strong> status on the Play Store.</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div class="wrap">
+    <footer>
+      <span>© 2026 Σήμερα</span>
+      <div class="footer-links">
+        <a href="../" id="footer-home">Αρχική</a>
+        <a href="../FAQ/" id="footer-faq">Συχνές Ερωτήσεις (FAQ)</a>
+        <a href="../Privacy/" id="footer-privacy">Πολιτική Απορρήτου</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    function setLang(lang) {
+      document.getElementById('content-el').style.display = lang === 'el' ? 'block' : 'none';
+      document.getElementById('content-en').style.display = lang === 'en' ? 'block' : 'none';
+      document.getElementById('switcher').setAttribute('data-lang', lang);
+      document.documentElement.lang = lang;
+      
+      const navHome = document.getElementById('nav-home');
+      const footerHome = document.getElementById('footer-home');
+      const navPrivacy = document.getElementById('nav-privacy');
+      const footerPrivacy = document.getElementById('footer-privacy');
+      const footerFaq = document.getElementById('footer-faq');
+
+      if (navHome) navHome.textContent = lang === 'el' ? 'Αρχική' : 'Home';
+      if (footerHome) footerHome.textContent = lang === 'el' ? 'Αρχική' : 'Home';
+      if (navPrivacy) navPrivacy.textContent = lang === 'el' ? 'Απόρρητο' : 'Privacy';
+      if (footerPrivacy) footerPrivacy.textContent = lang === 'el' ? 'Πολιτική Απορρήτου' : 'Privacy Policy';
+      if (footerFaq) footerFaq.textContent = lang === 'el' ? 'Συχνές Ερωτήσεις (FAQ)' : 'FAQ';
+
+      ['el', 'en'].forEach(function (l) {
+        var b = document.getElementById('btn-' + l);
+        b.classList.toggle('active', l === lang);
+        b.setAttribute('aria-pressed', l === lang);
+      });
+    }
+
+    function filterFaq(lang) {
+      const input = document.getElementById('faq-search-' + lang);
+      const query = input.value.trim().toLowerCase();
+      const container = document.getElementById('faq-container-' + lang);
+      const items = container.querySelectorAll('.faq-item');
+      const categories = container.querySelectorAll('.category-title');
+      const noResults = document.getElementById('no-results-' + lang);
+      let visibleCount = 0;
+
+      items.forEach(function (item) {
+        const text = item.textContent.toLowerCase();
+        const matches = text.includes(query);
+        item.style.display = matches ? 'block' : 'none';
+        if (matches) {
+          visibleCount++;
+          if (query.length > 0) {
+            item.setAttribute('open', '');
+          }
+        }
+      });
+
+      // Show/hide category titles based on whether they have visible items
+      categories.forEach(function (cat) {
+        let sibling = cat.nextElementSibling;
+        let hasVisible = false;
+        if (sibling && sibling.classList.contains('faq-list')) {
+          const listItems = sibling.querySelectorAll('.faq-item');
+          listItems.forEach(function (li) {
+            if (li.style.display !== 'none') hasVisible = true;
+          });
+        }
+        cat.style.display = hasVisible || query === '' ? 'flex' : 'none';
+      });
+
+      noResults.style.display = (visibleCount === 0 && query.length > 0) ? 'block' : 'none';
+    }
+  </script>
+</body>
+</html>

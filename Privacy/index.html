@@ -3,346 +3,360 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Πολιτική Απορρήτου | Privacy Policy - Σήμερα (Simera)</title>
+  <title>Πολιτική Απορρήτου | Privacy Policy — Σήμερα</title>
+  <meta name="description" content="Πολιτική απορρήτου για την εφαρμογή «Σήμερα» — 100% ιδιωτικότητα, μηδέν διαφημίσεις και trackers." />
+  <meta name="theme-color" content="#f6f7fb" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0b1024" media="(prefers-color-scheme: dark)" />
+
+  <link rel="icon" type="image/png" href="../favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Literata:opsz,wght@7..72,500;7..72,600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+
   <style>
     :root {
-      --bg: #f3f5fa;
-      --glow: rgba(255, 166, 43, 0.32);
-      --card: rgba(255, 255, 255, 0.85);
-      --text: #12172b;
-      --muted: #5b6480;
-      --accent: #1d4ed8;
-      --accent-soft: rgba(37, 99, 235, 0.08);
-      --sun: #d9480f;
-      --sun-soft: rgba(255, 152, 0, 0.12);
-      --line: rgba(18, 23, 43, 0.1);
-      --shadow: 0 30px 60px -30px rgba(18, 23, 43, 0.25), 0 2px 6px rgba(18, 23, 43, 0.04);
+      --bg: #f6f7fb; --card: #ffffff; --text: #12172b; --muted: #5b6480;
+      --line: rgba(18,23,43,.1); --blue: #1f4e79; --sun: #b86a00;
+      --sun-soft: rgba(255,152,0,.12); --blue-soft: rgba(0,174,239,.09);
+      --glow: rgba(255,166,43,.35);
+      --shadow: 0 30px 60px -30px rgba(18,23,43,.25), 0 2px 6px rgba(18,23,43,.04);
     }
     @media (prefers-color-scheme: dark) {
       :root {
-        --bg: #0b1024;
-        --glow: rgba(255, 166, 43, 0.2);
-        --card: rgba(22, 29, 56, 0.72);
-        --text: #eef1fb;
-        --muted: #9aa4c4;
-        --accent: #7aa7ff;
-        --accent-soft: rgba(122, 167, 255, 0.12);
-        --sun: #ffb84d;
-        --sun-soft: rgba(255, 184, 77, 0.12);
-        --line: rgba(238, 241, 251, 0.1);
-        --shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(238, 241, 251, 0.03);
+        --bg: #0b1024; --card: #151c38; --text: #eef1fb; --muted: #9aa4c4;
+        --line: rgba(238,241,251,.1); --blue: #4cc3f5; --sun: #ffb84d;
+        --sun-soft: rgba(255,184,77,.12); --blue-soft: rgba(76,195,245,.12);
+        --glow: rgba(255,166,43,.22);
+        --shadow: 0 30px 60px -30px rgba(0,0,0,.7), 0 0 0 1px rgba(238,241,251,.04);
       }
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { -webkit-text-size-adjust: 100%; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
     body {
       font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background:
-        radial-gradient(60rem 28rem at 50% -8rem, var(--glow), transparent 70%),
-        var(--bg);
-      background-repeat: no-repeat;
-      color: var(--text);
-      line-height: 1.7;
-      padding: clamp(1rem, 4vw, 3.5rem) 1rem 4rem;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      -webkit-font-smoothing: antialiased;
+      background: var(--bg); color: var(--text); line-height: 1.65;
+      -webkit-font-smoothing: antialiased; overflow-x: hidden;
     }
-    .container {
-      max-width: 720px;
-      width: 100%;
-      background: var(--card);
-      -webkit-backdrop-filter: blur(20px);
-      backdrop-filter: blur(20px);
-      border: 1px solid var(--line);
-      border-radius: 28px;
-      padding: clamp(1.5rem, 5vw, 3.25rem);
-      box-shadow: var(--shadow);
-      align-self: flex-start;
-      animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
-    }
-    @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
-    @media (prefers-reduced-motion: reduce) { .container { animation: none; } }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 1.25rem; }
+    .content-wrap { max-width: 780px; margin: 0 auto; }
+    h1, h2, h3 { font-family: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-weight: 700; letter-spacing: -.03em; line-height: 1.15; }
+    :focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
 
-    /* Language switch */
-    .hero {
-      position: relative;
-      height: clamp(170px, 34vw, 220px);
-      border-radius: 20px;
-      overflow: hidden;
-      background: linear-gradient(160deg, #ffd23f 0%, #ffab2e 45%, #ff7a1a 100%);
-    }
-    .hero svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+    /* Nav */
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 0; position: relative; z-index: 3; }
+    .brand { display: flex; align-items: center; gap: .6rem; font: 700 1.15rem "Manrope", sans-serif; letter-spacing: -.02em; text-decoration: none; color: var(--text); }
+    .brand img { width: 36px; height: 36px; border-radius: 10px; display: block; }
+    .nav-right { display: flex; align-items: center; gap: 1.25rem; }
+    .nav-links { display: flex; align-items: center; gap: 1.25rem; }
+    .nav-link { color: var(--muted); text-decoration: none; font-size: .95rem; font-weight: 500; transition: color .2s; }
+    .nav-link:hover, .nav-link.active { color: var(--text); }
+    .nav-link.active { font-weight: 600; }
+
+    /* Lang Switcher */
     .lang-switcher {
       display: inline-flex;
-      position: absolute;
-      top: 14px; right: 14px;
-      z-index: 2;
-      padding: 4px;
+      position: relative;
+      padding: 3px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.28);
-      -webkit-backdrop-filter: blur(8px);
-      backdrop-filter: blur(8px);
+      background: var(--card);
+      border: 1px solid var(--line);
+      box-shadow: 0 2px 8px rgba(18,23,43,.04);
     }
     .lang-switcher button {
       position: relative;
       z-index: 1;
       background: transparent;
       border: 0;
-      color: #5a2a00;
-      padding: 0.4rem 1rem;
+      color: var(--muted);
+      padding: 0.25rem 0.65rem;
       border-radius: 999px;
       cursor: pointer;
-      font: 500 0.8125rem/1 "Inter", sans-serif;
-      transition: color 0.25s;
+      font: 600 0.78rem/1 "Inter", sans-serif;
+      transition: color 0.2s ease;
     }
-    .lang-switcher button.active { color: #9a3400; }
+    .lang-switcher button.active { color: var(--text); }
     .lang-switcher .thumb {
       position: absolute;
-      top: 4px; bottom: 4px; left: 4px;
-      width: calc(50% - 4px);
-      background: #fff;
+      top: 3px; bottom: 3px; left: 3px;
+      width: calc(50% - 3px);
+      background: var(--sun-soft);
+      border: 1px solid rgba(255, 152, 0, 0.25);
       border-radius: 999px;
-      transition: transform 0.3s cubic-bezier(0.3, 0.8, 0.3, 1);
+      transition: transform 0.25s cubic-bezier(0.3, 0.8, 0.3, 1);
     }
     .lang-switcher[data-lang="en"] .thumb { transform: translateX(100%); }
-    button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
-    /* Hero */
-    header { padding-top: 1.75rem; }
+    /* Page Hero */
+    .page-hero {
+      position: relative; margin-top: -4.5rem; padding: 7.5rem 0 3rem;
+      background: radial-gradient(56rem 30rem at 50% -6rem, var(--glow), transparent 70%);
+      text-align: center;
+    }
     .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--sun-soft);
-      color: var(--sun);
-      border: 1px solid var(--line);
-      padding: 0.3rem 0.85rem;
-      border-radius: 999px;
-      font-size: 0.8125rem;
-      font-weight: 600;
-      margin-bottom: 1.25rem;
+      display: inline-flex; align-items: center; gap: .45rem;
+      background: var(--sun-soft); color: var(--sun);
+      border: 1px solid rgba(255, 152, 0, 0.25);
+      padding: .3rem .85rem; border-radius: 999px;
+      font-size: .8rem; font-weight: 600; margin-bottom: 1.25rem;
     }
-    .badge::before {
-      content: "";
-      width: 7px; height: 7px;
-      border-radius: 50%;
-      background: var(--sun);
-    }
-    h1 {
-      font-family: "Literata", Georgia, "Times New Roman", serif;
-      font-weight: 600;
-      font-size: clamp(2.25rem, 7vw, 3.5rem);
-      line-height: 1.08;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.9rem;
-    }
-    .date { color: var(--muted); font-size: 0.875rem; }
-    .lead {
-      font-size: 1.125rem;
-      color: var(--muted);
-      max-width: 34em;
-      margin: 1.5rem 0 0;
-    }
-    .lead strong { color: var(--text); font-weight: 600; }
+    .badge::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--sun); }
+    h1 { font-size: clamp(2.4rem, 6.5vw, 4rem); margin-bottom: .8rem; }
+    h1 span { background: linear-gradient(100deg,#ffb400,#ff6a00); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .sub { font-size: 1.15rem; color: var(--muted); max-width: 32em; margin: 0 auto; }
+    .meta-date { font-size: .88rem; color: var(--muted); margin-top: .8rem; }
 
-    /* Key facts */
+    /* Facts Grid */
     .facts {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      margin: 2.25rem 0 0.5rem;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      overflow: hidden;
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1rem; margin: 2rem 0 2.5rem;
     }
-    .facts div { padding: 1rem 1.1rem; font-size: 0.875rem; line-height: 1.4; color: var(--muted); }
-    .facts div + div { border-left: 1px solid var(--line); }
-    .facts b { display: block; color: var(--text); font-size: 0.95rem; font-weight: 600; margin-bottom: 0.2rem; }
-    @media (max-width: 560px) {
-      .facts { grid-template-columns: 1fr; }
-      .facts div + div { border-left: 0; border-top: 1px solid var(--line); }
+    .fact-card {
+      background: var(--card); border: 1px solid var(--line); border-radius: 20px;
+      padding: 1.35rem 1.25rem; box-shadow: var(--shadow);
+      text-align: center; transition: transform .2s ease;
+    }
+    .fact-card:hover { transform: translateY(-2px); }
+    .fact-icon {
+      width: 42px; height: 42px; border-radius: 12px; margin: 0 auto .85rem;
+      display: grid; place-items: center;
+      background: linear-gradient(160deg,#f8b93a,#e8800c); color: #4a1f00;
+    }
+    .fact-card:nth-child(2) .fact-icon { background: linear-gradient(160deg,#00aeef,#173c5e); color: #fff; }
+    .fact-card:nth-child(3) .fact-icon { background: linear-gradient(160deg,#34d399,#059669); color: #fff; }
+    .fact-icon svg { width: 22px; height: 22px; }
+    .fact-card b { display: block; font: 700 1.05rem "Manrope", sans-serif; letter-spacing: -.02em; color: var(--text); margin-bottom: .25rem; }
+    .fact-card span { font-size: .85rem; color: var(--muted); line-height: 1.4; display: block; }
+
+    /* Policy List */
+    .policy-list { display: flex; flex-direction: column; gap: 1.25rem; margin-bottom: 4rem; }
+    .policy-card {
+      background: var(--card); border: 1px solid var(--line); border-radius: 22px;
+      padding: 1.75rem 2rem; box-shadow: var(--shadow);
+      display: grid; grid-template-columns: 3rem 1fr; gap: 1rem;
+      transition: border-color .2s ease;
+    }
+    .policy-card:hover { border-color: rgba(255, 166, 43, 0.35); }
+    @media (prefers-color-scheme: dark) {
+      .policy-card:hover { border-color: rgba(76, 195, 245, 0.3); }
+    }
+    .policy-num {
+      width: 40px; height: 40px; border-radius: 12px;
+      background: var(--sun-soft); color: var(--sun);
+      display: grid; place-items: center;
+      font: 700 1.15rem "Manrope", sans-serif;
+    }
+    .policy-content h2 { font-size: 1.3rem; margin-bottom: .5rem; }
+    .policy-content p { color: var(--muted); line-height: 1.68; font-size: .98rem; }
+    .policy-content p + p { margin-top: .75rem; }
+    .policy-content strong { color: var(--text); font-weight: 600; }
+    .policy-note {
+      margin-top: .85rem; padding: .9rem 1.1rem;
+      background: var(--blue-soft); border-left: 3px solid var(--blue);
+      border-radius: 6px 14px 14px 6px;
+      color: var(--muted); font-size: .92rem; line-height: 1.6;
     }
 
-    /* Sections */
-    .policy { margin-top: 1.5rem; }
-    .policy section, .policy .item {
-      display: grid;
-      grid-template-columns: 2.5rem 1fr;
-      gap: 0 0.5rem;
-      padding: 1.6rem 0;
+    /* Footer */
+    footer {
+      padding: 2.5rem 0 3.5rem; display: flex; flex-wrap: wrap; gap: 1rem;
+      justify-content: space-between; color: var(--muted); font-size: .9rem;
       border-top: 1px solid var(--line);
     }
-    .num {
-      font-family: "Literata", Georgia, serif;
-      font-weight: 500;
-      color: var(--sun);
-      font-size: 1.125rem;
-      line-height: 1.5;
-    }
-    h2 {
-      font-family: "Literata", Georgia, serif;
-      font-weight: 600;
-      font-size: 1.25rem;
-      line-height: 1.35;
-      letter-spacing: -0.01em;
-      margin-bottom: 0.6rem;
-    }
-    .item p { color: var(--muted); max-width: 40em; }
-    .item p + p { margin-top: 0.85rem; }
-    .item strong { color: var(--text); font-weight: 600; }
-    .note {
-      margin-top: 0.85rem;
-      padding: 1rem 1.15rem;
-      background: var(--sun-soft);
-      border-left: 3px solid var(--sun);
-      border-radius: 4px 14px 14px 4px;
-    }
-    @media (max-width: 480px) {
-      .policy .item { grid-template-columns: 1fr; }
-      .num { margin-bottom: 0.25rem; }
+    footer a { color: var(--blue); text-decoration: none; font-weight: 500; }
+    footer a:hover { text-decoration: underline; }
+    .footer-links { display: flex; gap: 1.25rem; }
+
+    @media (max-width: 768px) {
+      .facts { grid-template-columns: 1fr; }
+      .policy-card { grid-template-columns: 1fr; padding: 1.4rem; gap: .75rem; }
+      .policy-num { width: 34px; height: 34px; font-size: 1rem; }
+      .nav-links { gap: .85rem; }
     }
   </style>
 </head>
 <body>
-  <main class="container">
-
-    <div class="hero" aria-hidden="true">
-      <svg viewBox="0 0 680 220" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="340" cy="175" r="120" fill="#fff" opacity="0.14"/>
-        <circle cx="340" cy="175" r="88" fill="#fff" opacity="0.2"/>
-        <g stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.85">
-          <line x1="340" y1="58" x2="340" y2="30" transform="rotate(-72 340 175)"/>
-          <line x1="340" y1="58" x2="340" y2="30" transform="rotate(-48 340 175)"/>
-          <line x1="340" y1="58" x2="340" y2="30" transform="rotate(-24 340 175)"/>
-          <line x1="340" y1="58" x2="340" y2="30"/>
-          <line x1="340" y1="58" x2="340" y2="30" transform="rotate(24 340 175)"/>
-          <line x1="340" y1="58" x2="340" y2="30" transform="rotate(48 340 175)"/>
-          <line x1="340" y1="58" x2="340" y2="30" transform="rotate(72 340 175)"/>
-        </g>
-        <circle cx="340" cy="175" r="62" fill="#fff6c9"/>
-        <path d="M0 176 Q85 152 170 176 T340 176 T510 176 T680 176 V220 H0Z" fill="#3b82f6" opacity="0.6"/>
-        <path d="M0 192 Q85 172 170 192 T340 192 T510 192 T680 192 V220 H0Z" fill="#1d4ed8"/>
-        <path d="M0 208 Q85 194 170 208 T340 208 T510 208 T680 208 V220 H0Z" fill="#1e3a8a"/>
-      </svg>
-      <div class="lang-switcher" id="switcher" data-lang="el" role="group" aria-label="Language">
-        <span class="thumb" aria-hidden="true"></span>
-        <button id="btn-el" class="active" aria-pressed="true" onclick="setLang('el')">Ελληνικά</button>
-        <button id="btn-en" aria-pressed="false" onclick="setLang('en')">English</button>
-      </div>
-    </div>
-
-    <!-- Ελληνικά -->
-    <div id="content-el">
-      <header>
-        <span class="badge">100% Ιδιωτικότητα</span>
-        <h1>Πολιτική Απορρήτου</h1>
-        <p class="date">Εφαρμογή «Σήμερα» • Τελευταία ενημέρωση: 28 Σεπτεμβρίου 2026</p>
-        <p class="lead">Η εφαρμογή <strong>«Σήμερα»</strong> έχει σχεδιαστεί με απόλυτο σεβασμό στην ιδιωτικότητα των χρηστών της.</p>
-        <div class="facts">
-          <div><b>Κανένα δεδομένο</b>Δεν συλλέγουμε προσωπικά δεδομένα</div>
-          <div><b>Μόνο στη συσκευή</b>Οι ρυθμίσεις μένουν τοπικά</div>
-          <div><b>Χωρίς διαφημίσεις</b>Ούτε trackers παρακολούθησης</div>
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="../"><img src="../icon.png" alt="" width="36" height="36" />Σήμερα</a>
+      <div class="nav-right">
+        <div class="nav-links">
+          <a href="../" class="nav-link" id="nav-home">Αρχική</a>
+          <a href="../FAQ/" class="nav-link" id="nav-faq">FAQ</a>
+          <a href="../Privacy/" class="nav-link active" id="nav-privacy">Απόρρητο</a>
         </div>
-      </header>
-
-      <div class="policy">
-        <section class="item">
-          <span class="num">1</span>
-          <div>
-            <h2>Συλλογή &amp; Χρήση Δεδομένων</h2>
-            <p><strong>Δεν συλλέγουμε κανένα προσωπικό δεδομένο.</strong> Η εφαρμογή δεν καταγράφει, δεν αποθηκεύει σε απομακρυσμένους διακομιστές (servers) και δεν μεταδίδει καμία πληροφορία που αφορά εσάς ή τη συσκευή σας.</p>
-          </div>
-        </section>
-        <section class="item">
-          <span class="num">2</span>
-          <div>
-            <h2>Αποθήκευση Δεδομένων</h2>
-            <p>Όλες οι προτιμήσεις και οι ρυθμίσεις αποθηκεύονται <strong>αποκλειστικά τοπικά</strong> στη συσκευή σας. Σε περίπτωση απεγκατάστασης της εφαρμογής, όλα τα δεδομένα διαγράφονται οριστικά.</p>
-          </div>
-        </section>
-        <section class="item">
-          <span class="num">3</span>
-          <div>
-            <h2>Αναφορές Σφαλμάτων &amp; Εξωτερικές Υπηρεσίες</h2>
-            <p>Η εφαρμογή <strong>δεν περιέχει διαφημίσεις</strong>, εργαλεία προώθησης (marketing) ή trackers παρακολούθησης συμπεριφοράς.</p>
-            <p class="note">Για τη βελτίωση της σταθερότητας και την επιδιόρθωση προβλημάτων, η εφαρμογή χρησιμοποιεί το <strong>Firebase Crashlytics</strong> (της Google). Σε περίπτωση σφάλματος ή κατάρρευσης (crash), συλλέγονται αποκλειστικά ανώνυμα τεχνικά δεδομένα διάγνωσης (όπως μοντέλο συσκευής, έκδοση λειτουργικού συστήματος και αναφορά σφάλματος), τα οποία δεν μπορούν να σας ταυτοποιήσουν προσωπικά.</p>
-          </div>
-        </section>
-        <section class="item">
-          <span class="num">4</span>
-          <div>
-            <h2>Δικαιώματα Συσκευής</h2>
-            <p>Η εφαρμογή ζητά μόνο τα απολύτως απαραίτητα δικαιώματα συστήματος (π.χ. αποστολή ειδοποιήσεων) και δεν έχει πρόσβαση στην τοποθεσία, τις επαφές, τη μνήμη ή την κάμερα της συσκευής.</p>
-          </div>
-        </section>
-        <section class="item">
-          <span class="num">5</span>
-          <div>
-            <h2>Επικοινωνία</h2>
-            <p>Για οποιαδήποτε ερώτηση σχετικά με την παρούσα πολιτική, επικοινωνήστε μαζί μας μέσω email.</p>
-          </div>
-        </section>
-      </div>
-    </div>
-
-    <!-- English -->
-    <div id="content-en" style="display: none;">
-      <header>
-        <span class="badge">100% Private</span>
-        <h1>Privacy Policy</h1>
-        <p class="date">"Simera" App • Last updated: September 28, 2026</p>
-        <p class="lead">The <strong>"Simera"</strong> app is designed with complete respect for user privacy.</p>
-        <div class="facts">
-          <div><b>No data collected</b>No personal data, ever</div>
-          <div><b>Stays on your device</b>Settings are stored locally</div>
-          <div><b>No ads</b>No behavioral tracking SDKs</div>
+        <div class="lang-switcher" id="switcher" data-lang="el" role="group" aria-label="Language">
+          <span class="thumb" aria-hidden="true"></span>
+          <button id="btn-el" class="active" aria-pressed="true" onclick="setLang('el')">EL</button>
+          <button id="btn-en" aria-pressed="false" onclick="setLang('en')">EN</button>
         </div>
-      </header>
-
-      <div class="policy">
-        <section class="item">
-          <span class="num">1</span>
-          <div>
-            <h2>Data Collection &amp; Use</h2>
-            <p><strong>We do not collect any personal data.</strong> The app does not record, transmit, or store any personal or usage information on external servers.</p>
-          </div>
-        </section>
-        <section class="item">
-          <span class="num">2</span>
-          <div>
-            <h2>Local Storage</h2>
-            <p>All settings and preferences are stored <strong>strictly locally</strong> on your device. Uninstalling the app permanently deletes all associated data.</p>
-          </div>
-        </section>
-        <section class="item">
-          <span class="num">3</span>
-          <div>
-            <h2>Crash Reporting &amp; Third-Party Services</h2>
-            <p>The app <strong>contains no advertisements</strong>, marketing tools, or behavioral tracking SDKs.</p>
-            <p class="note">To ensure app stability and diagnose technical issues, we use <strong>Firebase Crashlytics</strong> (provided by Google). In the event of an unexpected crash, anonymous diagnostic logs are collected (such as device model, OS version, and stack traces). This information is purely technical and cannot be used to personally identify you.</p>
-          </div>
-        </section>
-        <section class="item">
-          <span class="num">4</span>
-          <div>
-            <h2>Device Permissions</h2>
-            <p>The app requests only minimal system permissions (e.g. posting notifications) and does not access sensitive device features (location, contacts, camera, etc.).</p>
-          </div>
-        </section>
-        <section class="item">
-          <span class="num">5</span>
-          <div>
-            <h2>Contact</h2>
-            <p>If you have any questions regarding this Privacy Policy, please contact us via email.</p>
-          </div>
-        </section>
       </div>
-    </div>
-  </main>
+    </nav>
+  </div>
+
+  <!-- Ελληνικά -->
+  <div id="content-el">
+    <header class="page-hero">
+      <div class="wrap">
+        <div class="hero-badge"><span class="badge">Privacy by Design</span></div>
+        <h1>Πολιτική <span>Απορρήτου.</span></h1>
+        <p class="sub">Η εφαρμογή «Σήμερα» έχει σχεδιαστεί με απόλυτο σεβασμό στην ιδιωτικότητά σου.</p>
+        <p class="meta-date">Τελευταία ενημέρωση: 28 Σεπτεμβρίου 2026</p>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <div class="content-wrap">
+        <div class="facts">
+          <div class="fact-card">
+            <div class="fact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <b>Κανένα Δεδομένο</b>
+            <span>Δεν συλλέγουμε κανένα προσωπικό σας δεδομένο</span>
+          </div>
+          <div class="fact-card">
+            <div class="fact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/></svg>
+            </div>
+            <b>Μόνο στη Συσκευή</b>
+            <span>Όλες οι ρυθμίσεις αποθηκεύονται τοπικά</span>
+          </div>
+          <div class="fact-card">
+            <div class="fact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+            </div>
+            <b>Χωρίς Trackers</b>
+            <span>Μηδέν διαφημίσεις και SDK παρακολούθησης</span>
+          </div>
+        </div>
+
+        <div class="policy-list">
+          <article class="policy-card">
+            <div class="policy-num">1</div>
+            <div class="policy-content">
+              <h2>Συλλογή &amp; Χρήση Δεδομένων</h2>
+              <p><strong>Δεν συλλέγουμε κανένα προσωπικό δεδομένο.</strong> Η εφαρμογή δεν καταγράφει, δεν αποθηκεύει σε απομακρυσμένους διακομιστές (servers) και δεν μεταδίδει καμία πληροφορία που αφορά εσάς ή τη συσκευή σας.</p>
+            </div>
+          </article>
+
+          <article class="policy-card">
+            <div class="policy-num">2</div>
+            <div class="policy-content">
+              <h2>Αποθήκευση Δεδομένων</h2>
+              <p>Όλες οι προτιμήσεις και οι ρυθμίσεις αποθηκεύονται <strong>αποκλειστικά τοπικά</strong> στη συσκευή σας. Σε περίπτωση απεγκατάστασης της εφαρμογής, όλα τα δεδομένα διαγράφονται οριστικά.</p>
+            </div>
+          </article>
+
+          <article class="policy-card">
+            <div class="policy-num">3</div>
+            <div class="policy-content">
+              <h2>Αναφορές Σφαλμάτων &amp; Εξωτερικές Υπηρεσίες</h2>
+              <p>Η εφαρμογή <strong>δεν περιέχει διαφημίσεις</strong>, εργαλεία προώθησης (marketing) ή trackers παρακολούθησης συμπεριφοράς.</p>
+              <div class="policy-note">
+                Για τη βελτίωση της σταθερότητας και την επιδιόρθωση προβλημάτων, η εφαρμογή χρησιμοποιεί το <strong>Firebase Crashlytics</strong> (της Google). Σε περίπτωση σφάλματος ή κατάρρευσης (crash), συλλέγονται αποκλειστικά ανώνυμα τεχνικά δεδομένα διάγνωσης (όπως μοντέλο συσκευής, έκδοση λειτουργικού συστήματος και αναφορά σφάλματος), τα οποία δεν μπορούν να σας ταυτοποιήσουν προσωπικά.
+              </div>
+            </div>
+          </article>
+
+          <article class="policy-card">
+            <div class="policy-num">4</div>
+            <div class="policy-content">
+              <h2>Δικαιώματα Συσκευής</h2>
+              <p>Η εφαρμογή ζητά μόνο τα απαραίτητα δικαιώματα για τη λειτουργία των δυνατοτήτων της (π.χ. τοποθεσία για τον υπολογισμό ανατολής/δύσης και αστρονομικών στοιχείων, επαφές για εορτές και γενέθλια, και αποστολή ειδοποιήσεων). Όλα τα δεδομένα υφίστανται επεξεργασία αποκλειστικά τοπικά στη συσκευή σας.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- English -->
+  <div id="content-en" style="display: none;">
+    <header class="page-hero">
+      <div class="wrap">
+        <div class="hero-badge"><span class="badge">Privacy by Design</span></div>
+        <h1>Privacy <span>Policy.</span></h1>
+        <p class="sub">The "Simera" app is designed with complete respect for your privacy.</p>
+        <p class="meta-date">Last updated: September 28, 2026</p>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <div class="content-wrap">
+        <div class="facts">
+          <div class="fact-card">
+            <div class="fact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <b>Zero Data Collected</b>
+            <span>No personal data is ever collected or tracked</span>
+          </div>
+          <div class="fact-card">
+            <div class="fact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/></svg>
+            </div>
+            <b>On-Device Only</b>
+            <span>All your settings and notes stay local</span>
+          </div>
+          <div class="fact-card">
+            <div class="fact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+            </div>
+            <b>No Trackers</b>
+            <span>Zero advertisements or tracking SDKs</span>
+          </div>
+        </div>
+
+        <div class="policy-list">
+          <article class="policy-card">
+            <div class="policy-num">1</div>
+            <div class="policy-content">
+              <h2>Data Collection &amp; Use</h2>
+              <p><strong>We do not collect any personal data.</strong> The app does not record, transmit, or store any personal or usage information on external servers.</p>
+            </div>
+          </article>
+
+          <article class="policy-card">
+            <div class="policy-num">2</div>
+            <div class="policy-content">
+              <h2>Local Storage</h2>
+              <p>All settings and preferences are stored <strong>strictly locally</strong> on your device. Uninstalling the app permanently deletes all associated data.</p>
+            </div>
+          </article>
+
+          <article class="policy-card">
+            <div class="policy-num">3</div>
+            <div class="policy-content">
+              <h2>Crash Reporting &amp; Third-Party Services</h2>
+              <p>The app <strong>contains no advertisements</strong>, marketing tools, or behavioral tracking SDKs.</p>
+              <div class="policy-note">
+                To ensure app stability and diagnose technical issues, we use <strong>Firebase Crashlytics</strong> (provided by Google). In the event of an unexpected crash, anonymous diagnostic logs are collected (such as device model, OS version, and stack traces). This information is purely technical and cannot be used to personally identify you.
+              </div>
+            </div>
+          </article>
+
+          <article class="policy-card">
+            <div class="policy-num">4</div>
+            <div class="policy-content">
+              <h2>Device Permissions</h2>
+              <p>The app requests only permissions required for its features (e.g. location for calculating sunrise/sunset and astronomical data, contacts for identifying celebrating contacts and birthdays, and notifications). All data is processed strictly locally on your device.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div class="wrap">
+    <footer>
+      <span>© 2026 Σήμερα</span>
+      <div class="footer-links">
+        <a href="../" id="footer-home">Αρχική</a>
+        <a href="../FAQ/" id="footer-faq">Συχνές Ερωτήσεις (FAQ)</a>
+        <a href="../Privacy/" id="footer-privacy">Πολιτική Απορρήτου</a>
+      </div>
+    </footer>
+  </div>
 
   <script>
     function setLang(lang) {
@@ -350,6 +364,19 @@
       document.getElementById('content-en').style.display = lang === 'en' ? 'block' : 'none';
       document.getElementById('switcher').setAttribute('data-lang', lang);
       document.documentElement.lang = lang;
+      
+      const navHome = document.getElementById('nav-home');
+      const footerHome = document.getElementById('footer-home');
+      const navPrivacy = document.getElementById('nav-privacy');
+      const footerPrivacy = document.getElementById('footer-privacy');
+      const footerFaq = document.getElementById('footer-faq');
+
+      if (navHome) navHome.textContent = lang === 'el' ? 'Αρχική' : 'Home';
+      if (footerHome) footerHome.textContent = lang === 'el' ? 'Αρχική' : 'Home';
+      if (navPrivacy) navPrivacy.textContent = lang === 'el' ? 'Απόρρητο' : 'Privacy';
+      if (footerPrivacy) footerPrivacy.textContent = lang === 'el' ? 'Πολιτική Απορρήτου' : 'Privacy Policy';
+      if (footerFaq) footerFaq.textContent = lang === 'el' ? 'Συχνές Ερωτήσεις (FAQ)' : 'FAQ';
+
       ['el', 'en'].forEach(function (l) {
         var b = document.getElementById('btn-' + l);
         b.classList.toggle('active', l === lang);

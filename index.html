@@ -23,7 +23,7 @@
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Literata:opsz,wght@7..72,500;7..72,600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
       --bg: #f6f7fb; --card: #ffffff; --text: #12172b; --muted: #5b6480;
@@ -49,13 +49,17 @@
       -webkit-font-smoothing: antialiased; overflow-x: hidden;
     }
     .wrap { max-width: 1080px; margin: 0 auto; padding: 0 1.25rem; }
-    h1, h2, h3 { font-family: "Literata", Georgia, "Times New Roman", serif; font-weight: 600; letter-spacing: -.02em; line-height: 1.1; }
+    h1, h2, h3 { font-family: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-weight: 700; letter-spacing: -.03em; line-height: 1.12; }
     :focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
 
     /* Nav */
     nav { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 0; position: relative; z-index: 3; }
-    .brand { display: flex; align-items: center; gap: .6rem; font: 600 1.15rem "Literata", serif; text-decoration: none; color: var(--text); }
+    .brand { display: flex; align-items: center; gap: .6rem; font: 700 1.15rem "Manrope", sans-serif; letter-spacing: -.02em; text-decoration: none; color: var(--text); }
     .brand img { width: 36px; height: 36px; border-radius: 10px; display: block; }
+    .nav-links { display: flex; align-items: center; gap: 1.25rem; }
+    .nav-link { color: var(--muted); text-decoration: none; font-size: .95rem; font-weight: 500; transition: color .2s; }
+    .nav-link:hover, .nav-link.active { color: var(--text); }
+    .nav-link.active { font-weight: 600; }
 
     /* Hero */
     .hero {
@@ -81,7 +85,7 @@
     .screen { position: relative; height: 100%; border-radius: 30px; overflow: hidden; background: #f09a05; }
     .screen::before { content: ""; position: absolute; top: 9px; left: 50%; width: 62px; height: 16px; margin-left: -31px; border-radius: 999px; background: #0d1226; z-index: 2; }
     .screen img { position: absolute; left: 0; top: 42%; width: 100%; transform: translateY(-50%); }
-    .screen .t { position: absolute; bottom: 6%; left: .5rem; right: .5rem; text-align: center; font: 600 1.05rem/1.25 "Literata", Georgia, serif; color: #3a1700; letter-spacing: -.01em; }
+    .screen .t { position: absolute; bottom: 6%; left: .5rem; right: .5rem; text-align: center; font: 700 1.05rem/1.25 "Manrope", sans-serif; color: #3a1700; letter-spacing: -.02em; }
     .float { position: absolute; padding: .5rem .9rem; border-radius: 14px; background: var(--card); border: 1px solid var(--line); box-shadow: var(--shadow); font-size: .82rem; font-weight: 600; display: inline-flex; align-items: center; gap: .45rem; z-index: 2; }
     .float.a { top: 14%; left: 2%; color: var(--text); background: rgba(255, 255, 255, 0.92); border: 1px solid rgba(255, 152, 0, 0.35); box-shadow: 0 14px 30px -6px rgba(255, 152, 0, 0.3), var(--shadow); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
     .float.a .tag { display: inline-flex; align-items: center; background: linear-gradient(135deg, #ff9500 0%, #e65100 100%); color: #ffffff; padding: .2rem .55rem; border-radius: 8px; font-size: .75rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; box-shadow: 0 3px 10px rgba(230, 81, 0, 0.35); }
@@ -187,7 +191,7 @@
     /* Screenshots */
     .shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
     .shot { aspect-ratio: 9/16; border-radius: 28px; border: 2px dashed var(--line); background: var(--blue-soft); display: grid; place-items: center; text-align: center; color: var(--muted); font-size: .9rem; padding: 1rem; }
-    .shot b { display: block; font: 600 1.15rem "Literata", serif; color: var(--text); margin-bottom: .2rem; }
+    .shot b { display: block; font: 700 1.15rem "Manrope", sans-serif; letter-spacing: -.02em; color: var(--text); margin-bottom: .2rem; }
 
     /* FAQ */
     .faq-list { display: flex; flex-direction: column; gap: .9rem; max-width: 760px; }
@@ -265,6 +269,11 @@
   <div class="wrap">
     <nav>
       <a class="brand" href="#"><img src="icon.png" alt="" width="36" height="36" />Σήμερα</a>
+      <div class="nav-links">
+        <a href="#" class="nav-link active">Αρχική</a>
+        <a href="FAQ/" class="nav-link">FAQ</a>
+        <a href="Privacy/" class="nav-link">Απόρρητο</a>
+      </div>
     </nav>
   </div>
 
@@ -379,46 +388,6 @@
 
     <section>
       <div class="wrap">
-        <div class="head">
-          <h2 data-i="faq_t">Συχνές Ερωτήσεις</h2>
-          <p data-i="faq_p">Όλα όσα θέλεις να γνωρίζεις για την εφαρμογή «Σήμερα».</p>
-        </div>
-        <div class="faq-list">
-          <details class="faq-item" open>
-            <summary>
-              <span>Είναι όντως 100% δωρεάν για πάντα;</span>
-              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-            </summary>
-            <div class="faq-ans">
-              Ναι, απολύτως. Η εφαρμογή δεν περιέχει συνδρομές, πληρωμές εντός εφαρμογής (in-app purchases) ούτε κλειδωμένες λειτουργίες. Όλες οι δυνατότητες είναι και θα παραμείνουν διαθέσιμες σε όλους χωρίς κανένα κόστος.
-            </div>
-          </details>
-
-          <details class="faq-item">
-            <summary>
-              <span>Πώς διασφαλίζεται το απόρρητο και τα δεδομένα μου;</span>
-              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-            </summary>
-            <div class="faq-ans">
-              Η εφαρμογή έχει σχεδιαστεί με βάση την αρχή του «Privacy by Design». Δεν περιέχει διαφημιστικά δίκτυα, trackers ή μηχανισμούς παρακολούθησης. Τα δεδομένα και οι ρυθμίσεις σου μένουν αποθηκευμένα αποκλειστικά στη συσκευή σου.
-            </div>
-          </details>
-
-          <details class="faq-item">
-            <summary>
-              <span>Χρειάζεται σύνδεση στο internet για να λειτουργήσει;</span>
-              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-            </summary>
-            <div class="faq-ans">
-              Η εφαρμογή είναι σχεδιασμένη να λειτουργεί πλήρως offline. Ορισμένες προαιρετικές δυνατότητες ενδέχεται να απαιτήσουν μία εφάπαξ λήψη δεδομένων μέσω διαδικτύου κατά την πρώτη τους χρήση, και έπειτα παραμένουν διαθέσιμες χωρίς καμία σύνδεση.
-            </div>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="wrap">
         <div class="band">
           <h2 data-i="bt">Έρχεται στο Google Play</h2>
           <p data-i="bp">Ετοιμάζουμε την πρώτη έκδοση. Το κουμπί θα ενεργοποιηθεί μόλις είναι διαθέσιμη.</p>
@@ -434,7 +403,10 @@
   <div class="wrap">
     <footer>
       <span>© 2026 Σήμερα</span>
-      <a href="Privacy/" data-i="pp">Πολιτική Απορρήτου</a>
+      <div class="footer-links" style="display: flex; gap: 1.25rem;">
+        <a href="FAQ/" data-i="faq">Συχνές Ερωτήσεις (FAQ)</a>
+        <a href="Privacy/" data-i="pp">Πολιτική Απορρήτου</a>
+      </div>
     </footer>
   </div>
 
